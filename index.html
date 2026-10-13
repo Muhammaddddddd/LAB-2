@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lab 2: a small, accessible component library with a responsive grid, form elements, a CSS-only modal, alerts, and dark mode.">
+  <meta name="color-scheme" content="light dark">
+  <title>Lab 2 – Responsive, accessible components</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <p class="brand">Lab 2</p>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#layout">Layout</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#alerts">Alerts</a></li>
+          <li><a href="#modal">Modal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Components that adapt to the screen and the system theme</h1>
+      <p class="lead">Resize the window to see the grid move from one column to two on tablets and three on desktops. Switch your operating system between light and dark to see the colors follow.</p>
+    </section>
+
+    <!-- 1. Responsive layout -->
+    <section id="layout" aria-labelledby="layout-title">
+      <h2 id="layout-title">Responsive grid</h2>
+      <p>1 column on mobile, 2 from 768&nbsp;px, 3 from 1024&nbsp;px.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Tokens first</h3>
+          <p>Colors, spacing, and radii live in CSS custom properties, so dark mode only has to redefine a handful of values.</p>
+        </article>
+        <article class="card">
+          <h3>Mobile first</h3>
+          <p>Base styles target small screens. Media queries add columns as space becomes available.</p>
+        </article>
+        <article class="card">
+          <h3>Keyboard ready</h3>
+          <p>Every interactive element has a visible focus ring and a logical tab order.</p>
+        </article>
+        <article class="card">
+          <h3>No script required</h3>
+          <p>The modal opens and closes with CSS alone, using the <code>:target</code> pseudo-class.</p>
+        </article>
+        <article class="card">
+          <h3>Readable contrast</h3>
+          <p>Text and controls meet WCAG AA contrast in both light and dark themes.</p>
+        </article>
+        <article class="card">
+          <h3>Motion aware</h3>
+          <p>Transitions switch off for people who prefer reduced motion.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2a. Form elements -->
+    <section id="forms" aria-labelledby="forms-title">
+      <h2 id="forms-title">Form elements</h2>
+      <form class="form" action="#forms" method="get">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-hint" required>
+          <p id="email-hint" class="hint">We only use this to send your receipt.</p>
+        </div>
+
+        <div class="field">
+          <label for="plan">Plan</label>
+          <select id="plan" name="plan">
+            <option value="starter">Starter</option>
+            <option value="team" selected>Team</option>
+            <option value="enterprise">Enterprise</option>
+          </select>
+        </div>
+
+        <div class="field field-wide">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+
+        <div class="actions field-wide">
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <button type="reset" class="btn btn-secondary">Clear form</button>
+          <button type="button" class="btn btn-secondary" disabled>Unavailable</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 2c. Alerts -->
+    <section id="alerts" aria-labelledby="alerts-title">
+      <h2 id="alerts-title">Alerts</h2>
+      <div class="alert alert-info" role="status">
+        <p class="alert-title">Information</p>
+        <p>Your plan renews on 1 November.</p>
+      </div>
+      <div class="alert alert-success" role="status">
+        <p class="alert-title">Saved</p>
+        <p>Your changes were saved.</p>
+      </div>
+      <div class="alert alert-warning" role="status">
+        <p class="alert-title">Warning</p>
+        <p>Your storage is 90% full. Remove files or upgrade your plan.</p>
+      </div>
+      <div class="alert alert-error" role="alert">
+        <p class="alert-title">Error</p>
+        <p>We couldn't send your message. Check your connection and try again.</p>
+      </div>
+    </section>
+
+    <!-- 2b. CSS-only modal -->
+    <section id="modal" aria-labelledby="modal-title">
+      <h2 id="modal-title">Modal window</h2>
+      <p>Built with CSS only. Select the button to open it, then use the Close button or the backdrop link to dismiss it.</p>
+      <a class="btn btn-primary" href="#confirm-dialog">Delete project</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lab 2 demo. Built with HTML and CSS only.</p>
+    </div>
+  </footer>
+
+  <!-- Modal markup: shown when the URL fragment matches its id -->
+  <div class="modal" id="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
+    <a class="modal-backdrop" href="#modal" aria-label="Close dialog"></a>
+    <div class="modal-panel">
+      <h2 id="dialog-title">Delete this project?</h2>
+      <p id="dialog-desc">This permanently removes the project and its files. You can't undo this action.</p>
+      <div class="actions">
+        <a class="btn btn-danger" href="#modal">Delete project</a>
+        <a class="btn btn-secondary" href="#modal">Close</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
